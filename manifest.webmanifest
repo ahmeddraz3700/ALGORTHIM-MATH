@@ -1,0 +1,15 @@
+{
+  "id": "./",
+  "name": "مِعيار | حضور طلاب الرياضيات",
+  "short_name": "مِعيار",
+  "description": "إدارة طلاب الرياضيات والحضور دون اتصال بعد فتح الموقع أول مرة.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f7f9f7",
+  "theme_color": "#102820",
+  "icons": [{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
