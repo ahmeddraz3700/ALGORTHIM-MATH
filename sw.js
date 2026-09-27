@@ -1,4 +1,4 @@
-const CACHE = 'miyaar-static-v5';
+const CACHE = 'miyaar-static-v6';
 const FILES = ['./', './index.html', './style.css', './app.js', './manifest.webmanifest', './icon.svg'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES)).then(() => self.skipWaiting()));
