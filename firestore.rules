@@ -1,0 +1,75 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function ownStaffDocExists() {
+      return signedIn() && exists(/databases/$(database)/documents/staff/$(request.auth.uid));
+    }
+    function role() {
+      return ownStaffDocExists()
+        ? get(/databases/$(database)/documents/staff/$(request.auth.uid)).data.role
+        : '';
+    }
+    function isAdmin() { return role() == 'admin'; }
+    function isAssistant() { return role() == 'assistant'; }
+    function isStaff() { return isAdmin() || isAssistant(); }
+    function isQrStudent() {
+      return signedIn() && request.auth.token.firebase.sign_in_provider == 'anonymous';
+    }
+    function isStudentSecret(token) {
+      return token.matches('^[A-Z2-9]{17}$');
+    }
+
+    // حسابات المدرس والمساعد. أول حساب admin يُضاف يدويًا من لوحة Firebase.
+    match /staff/{uid} {
+      allow get: if signedIn() && (request.auth.uid == uid || isAdmin());
+      allow list: if isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
+    // بيانات الإدارة التعليمية. المساعد له نفس الصلاحيات باستثناء الدفع.
+    match /appMeta/{id} {
+      allow read, write: if isStaff();
+    }
+    match /students/{id} {
+      allow read, write: if isStaff();
+    }
+    match /codes/{id} {
+      allow read, write: if isStaff();
+    }
+    match /schedules/{id} {
+      allow read, write: if isStaff();
+    }
+    match /scheduleHistory/{id} {
+      allow read, write: if isStaff();
+    }
+    match /attendance/{id} {
+      allow read, write: if isStaff();
+    }
+    match /exams/{id} {
+      allow read, write: if isStaff();
+    }
+    match /examBatches/{id} {
+      allow read, write: if isStaff();
+    }
+
+    // المساعد لا يستطيع قراءة سجلات الدفع أو تعديلها.
+    match /payments/{id} {
+      allow read, write: if isAdmin();
+    }
+
+    // الطالب المجهول لا يقدر إلا على طلب ملف واحد بمعرفة الرمز السري نفسه؛ لا توجد قائمة أو بحث.
+    match /studentPortal/{token} {
+      allow get: if isAdmin() || isAssistant() || (isQrStudent() && isStudentSecret(token));
+      allow list: if isStaff();
+      allow create, update, delete: if isStaff();
+    }
+
+    // سجل دفع الطالب له مفتاح منفصل؛ المساعد لا يستطيع قراءته حتى من رابط QR.
+    match /studentPaymentPortal/{token} {
+      allow get: if isAdmin() || (isQrStudent() && isStudentSecret(token));
+      allow list: if isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+  }
+}
