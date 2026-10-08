@@ -44,3 +44,5 @@ body:not(.auth-staff) .shell{display:none!important}body.auth-staff #auth-gate,b
 .live-draw-counter{display:block;margin:0 0 10px;color:var(--muted);font-size:11px;font-weight:700}
 
 .schedule-extra-divider{margin:20px 0 12px;padding-top:16px;border-top:1px solid var(--line,#dbe2ea)}.schedule-extra-divider h3{margin:0;font-size:14px}.schedule-extra-divider p{margin:4px 0;color:var(--muted,#687385);font-size:11px}.lesson-status.is-cancelled{color:#667085;background:#f2f4f7;padding:4px 8px;border-radius:12px}body[data-theme="dark"] .lesson-status.is-cancelled{color:#c5cedb;background:#303b4b}
+
+.class-add-form{display:flex;align-items:end;gap:12px;margin:0 0 16px;padding:16px}.class-add-form label{display:grid;gap:7px;flex:1;font-size:13px;font-weight:700}.class-add-form input{width:100%;min-height:44px;padding:10px 12px;border:1px solid var(--line,#dbe2ea);border-radius:8px;background:var(--surface,#fff);color:inherit}@media(max-width:560px){.class-add-form{align-items:stretch;flex-direction:column}.class-add-form button{width:100%}}

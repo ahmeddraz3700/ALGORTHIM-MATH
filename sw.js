@@ -1,5 +1,5 @@
-const CACHE = 'miyaar-static-v44';
-const FILES = ['./', './index.html', './style.css?v=42', './app.js?v=44', './firebase-config.js', './manifest.webmanifest', './icon.svg'];
+const CACHE = 'miyaar-static-v46';
+const FILES = ['./', './index.html', './style.css?v=43', './app.js?v=46', './firebase-config.js', './manifest.webmanifest', './icon.svg'];
 const FIREBASE_SDK = [
   'https://www.gstatic.com/firebasejs/12.19.0/firebase-app-compat.js',
   'https://www.gstatic.com/firebasejs/12.19.0/firebase-auth-compat.js',
@@ -29,3 +29,4 @@ self.addEventListener('fetch', event => {
   }
   event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request).then(response => { if (response.ok) caches.open(CACHE).then(cache => cache.put(event.request, response.clone())); return response; })));
 });
+
