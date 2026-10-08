@@ -13,6 +13,7 @@
   <div class="side-label">القائمة الرئيسية</div>
   <button class="nav active" data-page="home"><span>⌂</span>الصفحة الرئيسية</button>
   <button class="nav" data-page="students"><span>♙</span>الطلاب</button>
+  <button class="nav" data-page="classes"><span>▤</span>الصفوف</button>
   <button class="nav" data-page="schedule"><span>▣</span>المواعيد</button>
   <button class="nav admin-only" data-page="accounts"><span>♙</span>الحسابات</button>
   <button class="nav" data-page="exams"><span>٪</span>الامتحانات</button>
@@ -27,7 +28,7 @@
 <section id="page-home" class="page active">
  <div class="welcome"><div><div class="welcome-tag">مساحة عملك التعليمية</div><h2>أهلًا بك 👋</h2><p>ابدأ بتجهيز أكواد طلابك، ثم سجّل الحضور بمسحة واحدة.</p></div><div class="welcome-art">∑<span>π</span><i>√</i></div></div>
  <section class="panel home-student-search"><div class="panel-head"><div><h3>البحث عن طالب</h3><p>اكتب اسمه أو كوده، أو امسح الباركود لفتح ملفه</p></div></div><form id="home-student-search-form" class="home-search-controls"><input id="home-student-query" type="search" placeholder="اسم الطالب أو الكود" autocomplete="off"><button class="primary" type="submit">بحث</button><button class="secondary" id="home-student-scan" type="button">▦ مسح باركود</button><button class="secondary" id="home-student-stop" type="button" hidden>إيقاف الكاميرا</button></form><div id="home-student-search-results" class="home-student-results" role="status" aria-live="polite"></div><div id="home-student-scan-wrap" class="scanner home-search-scanner" hidden><video id="home-student-video" playsinline></video><div id="home-student-placeholder" class="scanner-placeholder"><div class="scan-icon">▦</div><strong>وجّه الكاميرا إلى باركود الطالب</strong></div></div></section>
- <div class="stats"><article class="stat-card"><div class="stat-top"><span>إجمالي الطلاب</span><b class="stat-icon purple">♙</b></div><strong id="stat-students">0</strong><small>في جميع الصفوف</small></article><article class="stat-card"><div class="stat-top"><span>حضور اليوم</span><b class="stat-icon green">✓</b></div><strong id="stat-attendance">0</strong><small>طالب سجّل حضوره اليوم</small></article><article class="stat-card"><div class="stat-top"><span>الصفوف النشطة</span><b class="stat-icon orange">▤</b></div><strong id="stat-classes">6</strong><small>من الأول الإعدادي إلى الثالث الثانوي</small></article></div>
+ <div class="stats"><article class="stat-card"><div class="stat-top"><span>إجمالي الطلاب</span><b class="stat-icon purple">♙</b></div><strong id="stat-students">0</strong><small>في جميع الصفوف</small></article><article class="stat-card"><div class="stat-top"><span>حضور اليوم</span><b class="stat-icon green">✓</b></div><strong id="stat-attendance">0</strong><small>طالب سجّل حضوره اليوم</small></article><article class="stat-card"><div class="stat-top"><span>الصفوف النشطة</span><b class="stat-icon orange">▤</b></div><strong id="stat-classes">6</strong><small>صف دراسي مسجل</small></article></div>
  <div class="home-grid"><section class="panel"><div class="panel-head"><div><h3>ابدأ من هنا</h3><p>ثلاث خطوات بسيطة لتسجيل الحضور</p></div></div><div class="steps"><div class="step"><b>١</b><div><strong>جهّز الأكواد</strong><p>أنشئ أكواد QR بعدد الطلاب واطبعها على ورق A4.</p></div><button class="text-btn" data-goto="codes">تجهيز ←</button></div><div class="step"><b>٢</b><div><strong>سجّل الطلاب</strong><p>أدخل بيانات الطالب وامسح الكود لربطه بحسابه.</p></div><button class="text-btn" data-goto="students">إضافة طالب ←</button></div><div class="step"><b>٣</b><div><strong>سجّل الحضور</strong><p>افتح الكاميرا وامسح كود الطالب عند دخوله.</p></div><button class="text-btn" data-goto="attendance">مسح كود ←</button></div></div></section><section class="panel class-panel"><div class="panel-head"><div><h3>الطلاب حسب الصف</h3><p>توزيع الطلاب المسجلين</p></div></div><div id="class-summary"></div></section></div>
  <div class="notice"><span>ⓘ</span><div><strong>بياناتك محفوظة محليًا</strong><p>يعمل الموقع دون إنترنت. استخدم نفس المتصفح والجهاز للوصول إلى بياناتك.</p></div></div>
 </section>
@@ -48,6 +49,6 @@
 <script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-auth-compat.js" crossorigin="anonymous"></script>
 <script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore-compat.js" crossorigin="anonymous"></script>
 <script src="firebase-config.js"></script>
-<script src="app.js?v=46"></script>
+<script src="app.js?v=47"></script>
 </body></html>
 
