@@ -1,5 +1,5 @@
-const CACHE = 'miyaar-static-v43';
-const FILES = ['./', './index.html', './style.css?v=42', './app.js?v=43', './firebase-config.js', './manifest.webmanifest', './icon.svg'];
+const CACHE = 'miyaar-static-v44';
+const FILES = ['./', './index.html', './style.css?v=42', './app.js?v=44', './firebase-config.js', './manifest.webmanifest', './icon.svg'];
 const FIREBASE_SDK = [
   'https://www.gstatic.com/firebasejs/12.19.0/firebase-app-compat.js',
   'https://www.gstatic.com/firebasejs/12.19.0/firebase-auth-compat.js',
