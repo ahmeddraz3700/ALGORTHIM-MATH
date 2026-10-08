@@ -1,4 +1,4 @@
-const CACHE = 'miyaar-static-v47';
+const CACHE = 'miyaar-static-v49';
 const FILES = ['./', './index.html', './style.css?v=43', './app.js?v=47', './firebase-config.js', './manifest.webmanifest', './icon.svg'];
 const FIREBASE_SDK = [
   'https://www.gstatic.com/firebasejs/12.19.0/firebase-app-compat.js',
