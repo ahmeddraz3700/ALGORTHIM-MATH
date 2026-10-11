@@ -58,6 +58,10 @@ service cloud.firestore {
     }
 
     // المساعد لا يستطيع قراءة سجلات الدفع أو تعديلها.
+    // حسابات الشهر (خصم المكان والمصاريف) للمدرس بس زي الدفع.
+    match /finance/{id} {
+      allow read, write: if isAdmin();
+    }
     match /payments/{id} {
       allow read, write: if isAdmin();
     }
