@@ -43,6 +43,10 @@ service cloud.firestore {
     match /scheduleHistory/{id} {
       allow read, write: if isStaff();
     }
+    // الحصص اللي بتبدأ وتنتهي من صفحة الحضور (الغياب بيتسجل عند الإنهاء).
+    match /sessions/{id} {
+      allow read, write: if isStaff();
+    }
     match /attendance/{id} {
       allow read, write: if isStaff();
     }
