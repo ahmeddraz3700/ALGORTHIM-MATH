@@ -638,6 +638,41 @@ body:not(.auth-student) #student-portal-page { display: none !important; }
 @media (max-width: 1100px) { .finance-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .finance-layout { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 520px) { .fin-form { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .fin-form button { grid-column: 1 / -1; } .fin-card strong { font-size: 24px; } .fin-card { padding: 12px 14px; } .finance-cards { gap: 8px; } }
 
+/* ---------- Sessions v2: auto close, notice, name search, late add, class move ---------- */
+.session-autoclose { padding: 3px 10px; border-radius: 9px; background: rgba(255, 255, 255, .06); color: var(--spine-muted); font-size: 12.5px; }
+.session-autoclose.soon { background: color-mix(in srgb, var(--warn) 22%, transparent); color: var(--warn); font-weight: 700; }
+.suggest-list { display: grid; gap: 6px; margin-top: 8px; }
+.suggest-list:empty { display: none; }
+.suggest-item { display: flex; align-items: center; gap: 10px; padding: 8px 11px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); color: var(--text); text-align: right; transition: border-color .15s, transform .15s; }
+.suggest-item:hover { border-color: color-mix(in srgb, var(--accent) 60%, transparent); transform: translateY(-1px); }
+.suggest-item > span:last-child { display: flex; flex-direction: column; min-width: 0; }
+.suggest-item strong { font-size: 14px; }
+.suggest-item small { color: var(--muted); font-size: 12px; }
+.session-notice { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 0 0 18px; padding: 12px 16px; border-radius: var(--r-lg); border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent); background: color-mix(in srgb, var(--accent) 14%, var(--surface)); box-shadow: var(--shadow); animation: rise .4s cubic-bezier(.2, .9, .3, 1); }
+.session-notice > div { flex: 1; min-width: 180px; display: flex; flex-direction: column; }
+.session-notice strong { font-size: 15px; }
+.session-notice small { color: var(--muted); font-size: 12.5px; }
+.session-notice-icon { font-size: 22px; }
+.session-notice .primary, .session-notice .secondary { padding: 8px 14px; font-size: 13px; }
+.session-result-tools { display: flex; align-items: end; gap: 10px; flex-wrap: wrap; }
+.session-result-tools label { flex: 1; min-width: 160px; display: grid; gap: 6px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.session-result-tools select { width: 100%; min-height: 42px; }
+.session-result-tools .secondary { min-height: 42px; }
+.late-add { display: grid; gap: 6px; padding: 12px; border-radius: var(--r-md); background: var(--surface-2); }
+.late-add .session-result-heading { margin: 0; }
+.late-add .suggest-item { background: var(--surface); }
+.late-btn { flex: none; padding: 5px 12px; font-size: 12.5px; border-radius: 10px; }
+.class-move-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-inline-start: auto; }
+.class-move-actions .secondary { padding: 8px 14px; font-size: 13px; }
+#class-move-dialog { width: min(560px, calc(100vw - 28px)); }
+#class-move-dialog .scanner { height: 220px; }
+.class-switch-offer { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 12px; padding: 12px; border-radius: 14px; background: color-mix(in srgb, var(--warn) 14%, transparent); border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent); font-size: 14px; }
+.attendance-success-card .class-switch-offer span { display: block; width: auto; height: auto; background: none; border-radius: 0; color: var(--text); font-size: 14px; font-weight: 500; }
+.class-switch-done { margin: 10px 0 0; color: var(--ok-ink); font-weight: 700; }
+#attendance-success-extra { flex-basis: 100%; }
+#attendance-success-extra:empty { display: none; }
+@media (max-width: 720px) { .class-move-actions { width: 100%; margin: 0; } .class-move-actions .secondary { flex: 1; } .student-class-toolbar { flex-wrap: wrap; } }
+
 /* ---------- Animations ---------- */
 @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @keyframes live { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--bad) 60%, transparent); } 70% { box-shadow: 0 0 0 9px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
