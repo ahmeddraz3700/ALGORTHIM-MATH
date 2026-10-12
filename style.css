@@ -342,9 +342,10 @@ select option { background: var(--surface); color: var(--text); }
 .empty-preview small { font-size: 12.5px; }
 /* ورقة الطباعة تبقى بيضاء دائمًا */
 .print-sheet { width: 100%; max-width: 680px; background: #fff; color: #1c2033; box-shadow: 0 2px 14px rgba(0, 0, 0, .12); padding: 14mm 11mm; display: grid; align-content: start; gap: 5mm 3mm; }
-.qr-card { border: 1px dashed #c9ccd6; border-radius: 5px; min-width: 0; min-height: 34mm; padding: 3mm 1mm; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5mm; break-inside: avoid; background: #fff; }
+.qr-card { border: 1px dashed #c9ccd6; border-radius: 5px; min-width: 0; min-height: 40mm; padding: 3mm 1mm; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5mm; break-inside: avoid; background: #fff; }
 .qr-card svg { width: 23mm; height: 23mm; image-rendering: pixelated; }
-.qr-card span { font: 9px monospace; color: #444; direction: ltr; }
+.qr-card span { font: 700 10px monospace; color: #222; direction: ltr; }
+.qr-card .qr-by { font: 700 9.5px "IBM Plex Sans Arabic", Tahoma, sans-serif; color: #1c2033; }
 .code-status { margin-top: 10px; }
 
 /* ---------- Dialogs ---------- */
@@ -806,6 +807,6 @@ body:not(.auth-student) #student-portal-page { display: none !important; }
   .page:not(#page-codes) { display: none !important; }
   .code-preview { min-height: 0; overflow: visible; padding: 0; }
   .print-sheet { width: 210mm; max-width: none; min-height: 297mm; box-shadow: none; padding: 10mm 9mm; gap: 4mm 3mm; }
-  .qr-card { border: 1px dashed #bbb; min-height: 36mm; }
+  .qr-card { border: 1px dashed #bbb; min-height: 42mm; }
   .qr-card svg { width: 24mm; height: 24mm; }
 }
