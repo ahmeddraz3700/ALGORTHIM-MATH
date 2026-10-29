@@ -47,6 +47,11 @@ service cloud.firestore {
     match /sessions/{id} {
       allow read, write: if isStaff();
     }
+    // أرشيف الحصص القديمة: المساعد بيقراه، والمدرس بس اللي بيأرشف.
+    match /archive/{id} {
+      allow read: if isStaff();
+      allow write: if isAdmin();
+    }
     match /attendance/{id} {
       allow read, write: if isStaff();
     }

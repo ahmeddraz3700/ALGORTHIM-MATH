@@ -682,6 +682,57 @@ body:not(.auth-student) #student-portal-page { display: none !important; }
 #unknown-code-dialog h2 { font-family: var(--font-mono); font-weight: 700; font-size: 22px; }
 #unknown-code-dialog .suggest-list::before { content: 'ولا هو طالب متسجل قبل كده؟ اختاره يتربط بالكود:'; font-size: 12.5px; color: var(--muted); }
 
+/* ---------- Inactive students, reports, class delete ---------- */
+.inactive-panel { margin-top: 16px; border-color: color-mix(in srgb, var(--bad) 35%, var(--line)); }
+.inactive-pick { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); font-weight: 600; }
+.inactive-pick select { min-height: 38px; }
+.inactive-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 8px; }
+.inactive-row { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); cursor: pointer; }
+.inactive-row input { width: 18px; height: 18px; flex: none; }
+.inactive-info { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.inactive-info strong { font-size: 14px; }
+.inactive-info small { color: var(--muted); font-size: 12px; }
+.inactive-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; flex-wrap: wrap; }
+.inactive-actions .danger-btn { padding: 10px 18px; border-radius: 12px; }
+.inactive-actions .danger-btn:disabled { opacity: .45; cursor: not-allowed; box-shadow: none; transform: none; }
+.danger-text { color: var(--bad-ink); }
+.wide-dialog { width: min(1100px, calc(100vw - 20px)); }
+.rep-controls { display: flex; align-items: end; gap: 10px; flex-wrap: wrap; }
+.rep-controls label { display: grid; gap: 5px; font-size: 13px; font-weight: 600; color: var(--muted); min-width: 140px; flex: 1; }
+.rep-controls input, .rep-controls select { min-height: 42px; width: 100%; }
+.rep-controls .primary, .rep-controls .secondary { min-height: 42px; }
+.rep-wrap { max-height: 60vh; overflow: auto; border: 1px solid var(--line); border-radius: 12px; }
+.rep-wrap:empty { display: none; }
+.rep-table { border-collapse: separate; border-spacing: 0; width: max-content; min-width: 100%; font-size: 13px; }
+.rep-table th, .rep-table td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: center; white-space: nowrap; }
+.rep-table thead th { position: sticky; top: 0; background: var(--surface-2); z-index: 2; font-weight: 600; }
+.rep-table th span { display: block; font-size: 11px; color: var(--muted); }
+.rep-table .rep-name { position: sticky; right: 0; background: var(--surface); text-align: right; z-index: 1; min-width: 150px; }
+.rep-table thead .rep-name { z-index: 3; background: var(--surface-2); }
+.rep-yes { color: var(--ok-ink); font-weight: 800; }
+.rep-no { color: var(--bad-ink); font-weight: 800; background: color-mix(in srgb, var(--bad) 10%, transparent); }
+.rep-bad .rep-name .student-profile-shortcut { color: var(--bad-ink); }
+.rep-num { font-weight: 700; }
+.ok-num { color: var(--ok-ink); }
+.bad-num { color: var(--bad-ink); }
+.bs-dates { display: flex; gap: 6px; flex-wrap: wrap; }
+.bs-chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 6px 4px 12px; border-radius: 99px; background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--text); font-size: 13px; font-weight: 600; }
+.bs-chip button { border: 0; background: var(--surface); color: var(--muted); width: 22px; height: 22px; border-radius: 50%; line-height: 1; }
+.bs-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.bs-head strong { flex: 1; }
+.bs-head input { min-height: 38px; max-width: 220px; }
+.bs-students { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 6px; max-height: 40vh; overflow: auto; }
+.bs-student { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2); font-size: 13.5px; cursor: pointer; }
+.bs-student.hide { display: none; }
+.bs-student input { width: 17px; height: 17px; }
+#class-delete-dialog .danger-btn { padding: 10px 16px; border-radius: 12px; }
+@media (max-width: 520px) { .rep-controls label { min-width: 120px; } .inactive-list { grid-template-columns: minmax(0, 1fr); } }
+
+.archive-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; text-align: center; }
+.archive-stats > div { padding: 10px 6px; border-radius: 12px; background: var(--surface-2); }
+.archive-stats b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.2; }
+.archive-stats span { font-size: 12.5px; color: var(--muted); }
+
 /* ---------- Animations ---------- */
 @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @keyframes live { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--bad) 60%, transparent); } 70% { box-shadow: 0 0 0 9px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
