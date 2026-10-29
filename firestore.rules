@@ -13,6 +13,10 @@ service cloud.firestore {
     function isAdmin() { return role() == 'admin'; }
     function isAssistant() { return role() == 'assistant'; }
     function isStaff() { return isAdmin() || isAssistant(); }
+    // صلاحية يديها المدرس للمساعد من صفحة المساعدين (staff/{uid}.perms).
+    function can(p) {
+      return isAdmin() || (isAssistant() && get(/databases/$(database)/documents/staff/$(request.auth.uid)).data.get('perms', {}).get(p, false) == true);
+    }
     function isQrStudent() {
       return signedIn() && request.auth.token.firebase.sign_in_provider == 'anonymous';
     }
@@ -65,10 +69,10 @@ service cloud.firestore {
     // المساعد لا يستطيع قراءة سجلات الدفع أو تعديلها.
     // حسابات الشهر (خصم المكان والمصاريف) للمدرس بس زي الدفع.
     match /finance/{id} {
-      allow read, write: if isAdmin();
+      allow read, write: if can('finance');
     }
     match /payments/{id} {
-      allow read, write: if isAdmin();
+      allow read, write: if can('payments');
     }
 
     // الطالب المجهول لا يقدر إلا على طلب ملف واحد بمعرفة الرمز السري نفسه؛ لا توجد قائمة أو بحث.
@@ -80,9 +84,9 @@ service cloud.firestore {
 
     // سجل دفع الطالب له مفتاح منفصل؛ المساعد لا يستطيع قراءته حتى من رابط QR.
     match /studentPaymentPortal/{token} {
-      allow get: if isAdmin() || (isQrStudent() && isStudentSecret(token));
-      allow list: if isAdmin();
-      allow create, update, delete: if isAdmin();
+      allow get: if can('payments') || (isQrStudent() && isStudentSecret(token));
+      allow list: if can('payments');
+      allow create, update, delete: if can('payments');
     }
   }
 }

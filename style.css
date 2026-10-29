@@ -733,6 +733,24 @@ body:not(.auth-student) #student-portal-page { display: none !important; }
 .archive-stats b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.2; }
 .archive-stats span { font-size: 12.5px; color: var(--muted); }
 
+/* ---------- Assistant permissions ---------- */
+.staff-card { display: grid; gap: 10px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); }
+.staff-card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.staff-card-head > div { display: flex; flex-direction: column; }
+.staff-card-head small { color: var(--muted); font-size: 12.5px; }
+.staff-card-head .secondary { padding: 7px 12px; font-size: 13px; }
+.perm-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 6px; }
+.perm { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 10px; background: var(--surface-2); font-size: 13.5px; cursor: pointer; }
+.perm input { width: 18px; height: 18px; flex: none; }
+body.perm-off-students #add-student-btn, body.perm-off-students #add-class-btn, body.perm-off-students #rename-class-btn, body.perm-off-students #class-move-attend-btn, body.perm-off-students #class-move-only-btn, body.perm-off-students [data-edit], body.perm-off-students [data-move], body.perm-off-students #move-student-btn, body.perm-off-students #restore-btn { display: none !important; }
+body.perm-off-deleteStudents [data-delete], body.perm-off-deleteStudents #class-delete-btn, body.perm-off-deleteStudents .inactive-actions, body.perm-off-deleteStudents .inactive-row input { display: none !important; }
+body.perm-off-exams #exam-form, body.perm-off-exams [data-delete-exam] { display: none !important; }
+.pay-status { flex-basis: 100%; margin: 8px 0 0; padding: 8px 12px; border-radius: 12px; font-weight: 700; font-size: 15px; text-align: center; }
+.pay-status.is-paid { color: var(--ok-ink); background: color-mix(in srgb, var(--ok) 14%, transparent); }
+.pay-status.is-unpaid { color: var(--bad-ink); background: color-mix(in srgb, var(--bad) 14%, transparent); }
+.live-class-student.hw-missing { border-color: color-mix(in srgb, var(--bad) 55%, transparent); background: color-mix(in srgb, var(--bad) 10%, var(--surface-2)); }
+.live-class-student.hw-missing small { color: var(--bad-ink); font-weight: 700; }
+
 /* ---------- Animations ---------- */
 @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @keyframes live { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--bad) 60%, transparent); } 70% { box-shadow: 0 0 0 9px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
