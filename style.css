@@ -751,6 +751,70 @@ body.perm-off-exams #exam-form, body.perm-off-exams [data-delete-exam] { display
 .live-class-student.hw-missing { border-color: color-mix(in srgb, var(--bad) 55%, transparent); background: color-mix(in srgb, var(--bad) 10%, var(--surface-2)); }
 .live-class-student.hw-missing small { color: var(--bad-ink); font-weight: 700; }
 
+/* ---------- Duplicates, visitors, guardian phone, fees ---------- */
+.dup-list { display: grid; gap: 10px; max-height: 65vh; overflow: auto; }
+.dup-group { display: grid; gap: 8px; padding: 12px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface-2); }
+.dup-members { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 6px; }
+.dup-member { display: flex; gap: 10px; align-items: flex-start; padding: 9px 11px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); cursor: pointer; }
+.dup-member input { width: 18px; height: 18px; margin-top: 3px; flex: none; }
+.dup-member span { display: flex; flex-direction: column; min-width: 0; }
+.dup-member small { color: var(--muted); font-size: 12px; }
+.dup-member:has(input:checked) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, var(--surface)); }
+.dup-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.dup-actions small { flex: 1; min-width: 200px; }
+.visitors-panel { margin-top: 16px; border-color: color-mix(in srgb, var(--warn) 45%, var(--line)); }
+.class-switch-offer.strong { border-width: 2px; }
+.visit-hint { display: block; font-weight: 700; color: var(--accent-ink); }
+.attendance-success-card .class-switch-offer .visit-hint { color: var(--accent-ink); font-weight: 700; }
+#attendance-success-phone { flex-basis: 100%; }
+#attendance-success-phone:empty { display: none; }
+.guardian-ask { display: flex; align-items: end; gap: 8px; margin-top: 8px; padding: 10px; border-radius: 12px; background: var(--surface-2); text-align: right; }
+.guardian-ask label { flex: 1; display: grid; gap: 4px; font-size: 13px; font-weight: 700; color: var(--muted); }
+.guardian-ask input { min-height: 42px; direction: ltr; text-align: left; }
+.pay-status.is-partial { color: var(--accent-ink); background: color-mix(in srgb, var(--accent) 16%, transparent); }
+.fee-box { display: flex; align-items: end; gap: 8px; flex-wrap: wrap; flex-basis: 100%; padding-top: 10px; border-top: 1px dashed var(--line); }
+.fee-box label { display: grid; gap: 6px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.fee-input { position: relative; display: block; }
+.fee-input input { width: 160px; padding-inline-end: 40px; }
+.fee-input em { position: absolute; inset-inline-end: 12px; top: 50%; transform: translateY(-50%); font-style: normal; font-size: 12px; color: var(--muted); }
+.fee-box small { flex: 1; min-width: 200px; }
+.pay-chip { display: inline-block; margin-inline-start: 6px; padding: 1px 8px; border-radius: 99px; font-size: 11.5px; }
+.pay-chip.ok { color: var(--ok-ink); background: color-mix(in srgb, var(--ok) 14%, transparent); }
+.pay-chip.half { color: var(--accent-ink); background: color-mix(in srgb, var(--accent) 16%, transparent); }
+.pay-chip.no { color: var(--bad-ink); background: color-mix(in srgb, var(--bad) 14%, transparent); }
+body.perm-off-students [data-visitor-move], body.perm-off-students #visitors-move-all, body.perm-off-deleteStudents #dup-btn { display: none !important; }
+
+/* ---------- Points, parent reports, dashboard ---------- */
+.lb-list, .pr-list { display: grid; gap: 6px; max-height: 60vh; overflow: auto; }
+.lb-row, .pr-row { display: flex; align-items: center; gap: 12px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); }
+.lb-row.top { background: color-mix(in srgb, var(--accent) 8%, var(--surface-2)); }
+.lb-rank { width: 34px; text-align: center; font-family: var(--font-display); font-weight: 400; font-size: 22px; }
+.lb-info { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; }
+.lb-info small { color: var(--muted); font-size: 12px; }
+.lb-points { font-family: var(--font-display); font-weight: 400; font-size: 26px; color: var(--accent-ink); line-height: 1; text-align: center; }
+.lb-points small { display: block; font-family: var(--font-body); font-size: 11px; color: var(--muted); }
+.lb-row .secondary { padding: 6px 10px; font-size: 12.5px; }
+.pr-row .inactive-info { flex: 1; }
+.pr-row .wa-btn, .pr-row .secondary { padding: 7px 12px; font-size: 13px; border-radius: 10px; }
+.wa-btn.sent { background: var(--surface-3); color: var(--muted); }
+.home-dash { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 0 0 20px; }
+.home-dash:empty { display: none; }
+.dash-card { min-height: 0; }
+.dash-ses { width: 100%; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 9px 11px; margin-bottom: 6px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); color: var(--text); text-align: right; }
+.dash-ses b { flex: 1; min-width: 140px; font-size: 14px; }
+.dash-ses small { color: var(--muted); font-size: 12px; }
+.dash-rate { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.dash-rate strong { font-family: var(--font-display); font-weight: 400; font-size: 54px; line-height: 1; }
+.dash-rate .up { color: var(--ok-ink); font-weight: 700; }
+.dash-rate .down { color: var(--bad-ink); font-weight: 700; }
+.dash-rate small { flex-basis: 100%; color: var(--muted); }
+.dash-line { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px dashed var(--line); }
+.dash-line:first-of-type { border-top: 0; }
+.dash-line > small { flex: 1; color: var(--muted); font-size: 12px; }
+.dash-line > span { flex: 1; font-size: 14px; }
+.dash-line .class-meter { width: 90px; }
+@media (max-width: 1100px) { .home-dash { grid-template-columns: minmax(0, 1fr); } }
+
 /* ---------- Animations ---------- */
 @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @keyframes live { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--bad) 60%, transparent); } 70% { box-shadow: 0 0 0 9px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
